@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Countdown Timer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="hero">
+
+    <!-- THEME TOGGLE -->
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+      🌙
+    </button>
+
+    <!-- EVENT LABEL -->
+    <p id="eventLabel"></p>
+
+    <!-- TIMER -->
+    <div class="timer">
+      <div>
+        <span id="days">00</span>
+        <p>DAYS</p>
+      </div>
+      <div>
+        <span id="hours">00</span>
+        <p>HOURS</p>
+      </div>
+      <div>
+        <span id="minutes">00</span>
+        <p>MINUTES</p>
+      </div>
+      <div>
+        <span id="seconds">00</span>
+        <p>SECONDS</p>
+      </div>
+    </div>
+
+    <!-- INPUTS -->
+    <div class="inputs" id="inputs">
+      <input type="text" id="eventName" placeholder="Event name (optional)">
+      <input type="date" id="date">
+      <input type="time" id="time">
+      <button id="startBtn" disabled>Start</button>
+    </div>
+
+    <!-- CONTROLS -->
+    <div class="buttons">
+      <button id="stopBtn" disabled>Stop</button>
+      <button id="resetBtn" disabled>Reset</button>
+    </div>
+
+    <p id="error"></p>
+    <p id="message"></p>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

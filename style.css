@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300&display=swap');
+
+:root {
+  --bg-gradient: linear-gradient(180deg, #1f2937, #0f172a);
+  --text-color: #ffffff;
+  --muted-text: rgba(255, 255, 255, 0.6);
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-hover: rgba(255, 255, 255, 0.15);
+  --primary-border: rgba(255, 255, 255, 0.35);
+  --primary-bg: rgba(255, 255, 255, 0.12);
+}
+
+/* LIGHT THEME */
+body[data-theme="light"] {
+  --bg-gradient:
+    radial-gradient(
+      circle at 50% 30%,
+      rgba(255, 255, 255, 0.95),
+      rgba(243, 244, 246, 0.95) 45%,
+      rgba(229, 231, 235, 1) 100%
+    );
+  --text-color: #111827;
+  --muted-text: rgba(17, 24, 39, 0.6);
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(0, 0, 0, 0.15);
+  --glass-hover: rgba(0, 0, 0, 0.08);
+  --primary-border: rgba(0, 0, 0, 0.35);
+  --primary-bg: rgba(0, 0, 0, 0.12);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: var(--bg-gradient);
+  color: var(--text-color);
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+.hero {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+/* THEME TOGGLE */
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border-radius: 50%;
+  padding: 8px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  color: var(--text-color);
+  backdrop-filter: blur(10px);
+  transition: all 0.25s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--glass-hover);
+}
+
+.theme-toggle:active {
+  transform: scale(0.96);
+}
+
+/* EVENT LABEL */
+#eventLabel {
+  margin-bottom: 18px;
+  font-size: 18px;   
+  font-weight: 300;
+  letter-spacing: 1px;
+  color: var(--text-color); 
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+#eventLabel.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* TIMER */
+.timer {
+  display: flex;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+
+.timer span {
+  font-size: 72px;
+  font-weight: 200;
+  letter-spacing: 2px;
+  transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1),
+              color 0.18s ease;
+}
+
+.timer span:hover {
+  transform: translateY(-2px) scale(1.03);
+}
+
+.timer p {
+  margin-top: 6px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--muted-text);
+}
+
+/* TICK ANIMATION */
+.tick {
+  animation: tick 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes tick {
+  0% { transform: scale(1); opacity: 0.85; }
+  40% { transform: translateY(-2px) scale(1.04); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+/* FINISH STATE */
+.timer.finished span {
+  animation: pulse 1.2s ease-in-out infinite;
+  color: #22c55e;
+  text-shadow: 0 0 15px rgba(34, 197, 94, 0.6);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+/* INPUTS & BUTTONS */
+.inputs {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.inputs.hidden {
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+}
+
+.inputs input {
+  padding: 8px;
+  margin: 5px;
+  border-radius: 6px;
+  border: none;
+  background: var(--glass-bg);
+  color: var(--text-color);
+}
+
+.inputs button,
+.buttons button {
+  padding: 10px 18px;
+  margin: 0 5px;
+  border-radius: 6px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  color: var(--text-color);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.inputs button:hover,
+.buttons button:hover {
+  background: var(--glass-hover);
+  transform: translateY(-1px);
+}
+
+.inputs button:active,
+.buttons button:active {
+  transform: scale(0.96);
+}
+
+/* PRIMARY BUTTON */
+#startBtn:not(:disabled) {
+  border-color: var(--primary-border);
+  background: var(--primary-bg);
+}
+
+/* DISABLED */
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* MESSAGES */
+#error {
+  margin-top: 10px;
+  color: #ef4444;
+  font-size: 13px;
+}
+
+#message {
+  margin-top: 20px;
+  color: #22c55e;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+#message.show {
+  opacity: 1;
+}
