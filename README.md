@@ -1,4 +1,4 @@
-# ⏳ Premium Countdown Timer
+# ⏳ Countdown Timer
 
 A modern, elegant countdown timer built with **HTML, CSS, and JavaScript**, featuring smooth micro-interactions, theme switching, persistence, and keyboard shortcuts — all without external frameworks.
 
